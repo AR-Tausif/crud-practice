@@ -21,8 +21,23 @@ const getAllStudents = async (req: Request, res: Response) => {
     const result = await StudentServices.getAllStudentsFromDB();
     res.status(200).json({
       success: true,
-      massage: 'Students retrieved succesfully',
+      massage: 'Students are retrieved succesfully',
       result: result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getSingleStudent = async (req: Request, res: Response) => {
+  try {
+    const { studentId } = req.params;
+    const result = await StudentServices.getSingleStudentFromDB(studentId);
+
+    res.status(200).json({
+      success: true,
+      massage: 'Student retrieved succesfully',
+      data: result,
     });
   } catch (error) {
     console.log(error);
@@ -32,4 +47,5 @@ const getAllStudents = async (req: Request, res: Response) => {
 export const StudentControllers = {
   createStudents,
   getAllStudents,
+  getSingleStudent,
 };
