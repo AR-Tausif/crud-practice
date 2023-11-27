@@ -1,10 +1,15 @@
 import { Request, Response } from 'express';
 import { StudentServices } from './students.services';
+import TStudentsValidationSchema from './student.zode.validation';
 
 const createStudents = async (req: Request, res: Response) => {
   try {
     const { student: studentData } = req.body;
-    const result = await StudentServices.createStudentIntoDB(studentData);
+
+    // here trying to ZOD validation
+    const zodParseData = TStudentsValidationSchema.parse(studentData);
+
+    const result = await StudentServices.createStudentIntoDB(zodParseData);
 
     res.status(200).json({
       success: true,
@@ -12,7 +17,11 @@ const createStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: 'Somethig went wrong...',
+      error,
+    });
   }
 };
 

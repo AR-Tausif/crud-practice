@@ -1,4 +1,4 @@
-export type Gaurdian = {
+export type TGaurdian = {
   fatherName: string;
   fatherOccupation: string;
   fatherContactNo: string;
@@ -6,20 +6,20 @@ export type Gaurdian = {
   motherOccupation: string;
   motherContactNo: string;
 };
-export type UserName = {
+export type TUserName = {
   firstName: string;
-  middleName: string;
+  middleName?: string;
   lastName: string;
 };
-export type LocalGuardian = {
+export type TLocalGuardian = {
   name: string;
   occupation: string;
   contactNo: string;
   address: string;
 };
-export type Students = {
+export type TStudents = {
   id: string;
-  name: UserName;
+  name: TUserName;
   gender: 'male' | 'female';
   dateOfBirth?: string;
   email: string;
@@ -28,8 +28,8 @@ export type Students = {
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   presentAddress: string;
   permanentAddress: string;
-  gaurdian: Gaurdian;
-  localGuardian: LocalGuardian;
-  profiileImg?: string;
+  gaurdian: TGaurdian;
+  localGuardian: TLocalGuardian;
+  profiileImg?: string | undefined;
   isActive: 'active' | 'blocked';
 };
