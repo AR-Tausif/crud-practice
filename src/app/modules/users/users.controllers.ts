@@ -2,8 +2,9 @@ import { Request, Response } from 'express';
 import { UserSevices } from './users.services';
 
 const createStudents = async (req: Request, res: Response) => {
+  const { password, student: studentData } = req.body;
+
   try {
-    const { password, user: studentData } = req.body;
     const result = await UserSevices.createStudentIntoDB(password, studentData);
 
     res.status(200).json({
@@ -12,7 +13,6 @@ const createStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
     res.status(400).json({
       success: false,
       message: 'Get error about create student!',

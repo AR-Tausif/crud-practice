@@ -4,6 +4,7 @@ import config from '../../config';
 import { UserModel } from './users.model';
 import { StudentsModel } from '../students/students.model';
 
+// Created student
 const createStudentIntoDB = async (
   password: string,
   StudentData: TStudents,
@@ -22,16 +23,12 @@ const createStudentIntoDB = async (
   const createUser = await UserModel.create(userData);
 
   if (Object.keys(createUser).length) {
-    console.log({ inside: userData, std: StudentData });
-
     StudentData.userId = userData.id;
     StudentData.user = createUser._id;
-    console.log({ stD: StudentData });
 
     const createNewStudent = await StudentsModel.create(StudentData);
     return createNewStudent;
   }
-  console.log({ log: userData });
 };
 
 export const UserSevices = {
