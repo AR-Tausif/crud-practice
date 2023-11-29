@@ -13,9 +13,12 @@ const userSchema = new Schema<TUser>(
     },
     needsPasswordChange: {
       type: Boolean,
-      required: true,
+      default: true,
     },
-    role: { type: String, enum: ['student', 'faculty', 'admin'] },
+    role: {
+      type: String,
+      enum: ['student', 'faculty', 'admin'],
+    },
     status: {
       type: String,
       enum: ['in-progress', 'blocked'],
@@ -31,4 +34,4 @@ const userSchema = new Schema<TUser>(
   },
 );
 
-export const User = model<TUser>('User', userSchema);
+export const UserModel = model<TUser>('User', userSchema);

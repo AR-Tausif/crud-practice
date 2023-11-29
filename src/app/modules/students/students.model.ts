@@ -67,6 +67,12 @@ const studentsSchema = new Schema<TStudents>({
     required: [true, 'Student ID is required'],
     unique: true,
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    required: [true, 'Object id is required'],
+    unique: true,
+    ref: 'User',
+  },
   name: {
     type: userNameSchema,
     required: [true, 'Student name is required'],
@@ -106,15 +112,6 @@ const studentsSchema = new Schema<TStudents>({
     required: [true, 'Local guardian details are required'],
   },
   profiileImg: { type: String },
-  isActive: {
-    type: String,
-    enum: {
-      values: ['active', 'blocked'],
-      message: '{VALUE} is not a valid status',
-    },
-    default: 'active',
-    required: [true, 'Status is required'],
-  },
 });
 
 export const StudentsModel = model<TStudents>('Student', studentsSchema);
