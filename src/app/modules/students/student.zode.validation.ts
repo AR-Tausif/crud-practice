@@ -23,7 +23,7 @@ export const TLocalGuardianValidationSchema = z.object({
 });
 
 export const TStudentsValidationSchema = z.object({
-  id: z.string(),
+  userId: z.string(),
   name: TUserNameValidationSchema,
   gender: z.enum(['male', 'female']),
   dateOfBirth: z.string().optional(),
@@ -38,7 +38,6 @@ export const TStudentsValidationSchema = z.object({
   gaurdian: TGaurdianValidationSchema,
   localGuardian: TLocalGuardianValidationSchema,
   profiileImg: z.string().optional(),
-  isActive: z.enum(['active', 'blocked']),
 });
 
 export default TStudentsValidationSchema;
