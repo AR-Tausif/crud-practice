@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 import {
-  TGaurdian,
+  Tguardian,
   TLocalGuardian,
   TStudents,
   TUserName,
@@ -24,7 +24,7 @@ const userNameSchema = new Schema<TUserName>({
   },
 });
 
-const gaurdianSchema = new Schema<TGaurdian>({
+const guardianSchema = new Schema<Tguardian>({
   fatherName: { type: String, required: [true, "Father's name is required"] },
   fatherOccupation: {
     type: String,
@@ -103,8 +103,8 @@ const studentsSchema = new Schema<TStudents>({
     type: String,
     required: [true, 'Permanent address is required'],
   },
-  gaurdian: {
-    type: gaurdianSchema,
+  guardian: {
+    type: guardianSchema,
     required: [true, 'quardian data are required'],
   },
   localGuardian: {

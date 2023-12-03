@@ -37,18 +37,18 @@ const userSchema = new Schema<TUser>(
   },
 );
 
-userSchema.pre('save', async function () {
-  console.log(this);
+userSchema.pre('save', async function (next) {
   // password hasing there..
   this.password = await bcrypt.hash(
     this.password,
     Number(config.becrypt_salt_round),
   );
+  next();
 });
 userSchema.post('save', async function () {
   console.log(this);
   // password hasing there..
-  this.password = ""
+  this.password = '';
 });
 
 export const UserModel = model<TUser>('User', userSchema);

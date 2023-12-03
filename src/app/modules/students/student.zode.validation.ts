@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const TGaurdianValidationSchema = z.object({
+export const TGuardianValidationSchema = z.object({
   fatherName: z.string(),
   fatherOccupation: z.string(),
   fatherContactNo: z.string(),
@@ -22,22 +22,27 @@ export const TLocalGuardianValidationSchema = z.object({
   address: z.string(),
 });
 
-export const TStudentsValidationSchema = z.object({
-  userId: z.string(),
-  name: TUserNameValidationSchema,
-  gender: z.enum(['male', 'female']),
-  dateOfBirth: z.string().optional(),
-  email: z.string().email(),
-  contactNo: z.string(),
-  emergencyContactNo: z.string(),
-  bloodGroup: z
-    .enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
-    .optional(),
-  presentAddress: z.string(),
-  permanentAddress: z.string(),
-  gaurdian: TGaurdianValidationSchema,
-  localGuardian: TLocalGuardianValidationSchema,
-  profiileImg: z.string().optional(),
+export const TCreateStudentsValidationSchema = z.object({
+  body: z.object({
+    student: z.object({
+      name: TUserNameValidationSchema,
+      gender: z.enum(['male', 'female']),
+      dateOfBirth: z.string().optional(),
+      email: z.string().email(),
+      contactNo: z.string(),
+      emergencyContactNo: z.string(),
+      bloodGroup: z
+        .enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
+        .optional(),
+      presentAddress: z.string(),
+      permanentAddress: z.string(),
+      guardian: TGuardianValidationSchema,
+      localGuardian: TLocalGuardianValidationSchema,
+      profiileImg: z.string().optional(),
+    }),
+  }),
 });
 
-export default TStudentsValidationSchema;
+export const studentValidations = {
+  TCreateStudentsValidationSchema,
+};
