@@ -38,6 +38,7 @@ export const TCreateStudentsValidationSchema = z.object({
       permanentAddress: z.string(),
       guardian: TGuardianValidationSchema,
       localGuardian: TLocalGuardianValidationSchema,
+      addmissionSemester: z.string(),
       profiileImg: z.string().optional(),
     }),
   }),

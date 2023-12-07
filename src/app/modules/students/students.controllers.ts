@@ -16,7 +16,12 @@ const getAllStudents = CatchAsync(async (req, res) => {
 const getSingleStudent = CatchAsync(async (req, res) => {
   const { studentId } = req.params;
   const user = await StudentServices.getSingleStudentFromDB(studentId);
-  sendResponds(res, 'Student retrieved succesfully', user);
+  sendResponds(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Student retrieved succesfully',
+    data: user,
+  });
 });
 
 export const StudentControllers = {

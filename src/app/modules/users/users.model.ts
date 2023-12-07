@@ -46,9 +46,7 @@ userSchema.pre('save', async function (next) {
   next();
 });
 userSchema.post('save', async function () {
-  console.log(this);
-  // password hasing there..
-  this.password = '';
+  this.password = ' ';
 });
 
 export const UserModel = model<TUser>('User', userSchema);
