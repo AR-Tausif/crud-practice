@@ -3,13 +3,6 @@ import { TAcademicSemister } from './academicSemister.interface';
 import { AcademicSemisterModel } from './academicSemister.model';
 
 const createAcademicSemisterService = async (payload: TAcademicSemister) => {
-  console.log(payload);
-
-  console.log(
-    typeof academicSemisterNameCodeMapper[payload.name] !==
-      academicSemisterNameCodeMapper[payload.code],
-  );
-
   if (
     academicSemisterNameCodeMapper[payload.name] ===
     academicSemisterNameCodeMapper[payload.code]
@@ -21,6 +14,16 @@ const createAcademicSemisterService = async (payload: TAcademicSemister) => {
   return result;
 };
 
+const getAllAcademicSemesterDataService = async () => {
+  return await AcademicSemisterModel.find({});
+};
+
+const getSingleAcademicSemisterDataServic = async (id: string) => {
+  return await AcademicSemisterModel.findById(id);
+};
+
 export const AcadmicSemesterServices = {
   createAcademicSemisterService,
+  getAllAcademicSemesterDataService,
+  getSingleAcademicSemisterDataServic,
 };
