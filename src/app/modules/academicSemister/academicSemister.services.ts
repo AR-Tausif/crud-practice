@@ -3,10 +3,17 @@ import { TAcademicSemister } from './academicSemister.interface';
 import { AcademicSemisterModel } from './academicSemister.model';
 
 const createAcademicSemisterService = async (payload: TAcademicSemister) => {
-  if (
-    academicSemisterNameCodeMapper[payload.name] ===
-    academicSemisterNameCodeMapper[payload.code]
-  ) {
+  // console.log(
+  //   'start',
+  //   academicSemisterNameCodeMapper[payload.name],
+  //   academicSemisterNameCodeMapper[payload.code],
+  //   'ok',
+  // );
+  console.log(payload);
+  const names = academicSemisterNameCodeMapper;
+  console.log(names);
+
+  if (names[payload.name] !== payload.code) {
     throw new Error('Academic Semester Name and code not matched');
   }
   const result = await AcademicSemisterModel.create(payload);

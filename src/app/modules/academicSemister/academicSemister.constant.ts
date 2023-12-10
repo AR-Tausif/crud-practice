@@ -18,7 +18,7 @@ export const academicSemisterMonths: TMonths[] = [
   'December',
 ];
 export const academicSemisterNames: TAcademicSemisterName[] = [
-  'Auntmn',
+  'Autmn',
   'Summer',
   'Fall',
 ];

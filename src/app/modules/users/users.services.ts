@@ -3,6 +3,8 @@ import { TStudents } from '../students/students.interface';
 import config from '../../config';
 import { UserModel } from './users.model';
 import { StudentsModel } from '../students/students.model';
+import { AcademicSemisterModel } from '../academicSemister/academicSemister.model';
+import { generateUserId } from './users.utils';
 
 // Created student
 const createStudentIntoDB = async (
@@ -19,7 +21,13 @@ const createStudentIntoDB = async (
   }
   // set a user role & id embaded
   userData.role = 'student';
-  userData.id = '0124560001';
+
+  // Find academic semester with id
+  const academicSemister = await AcademicSemisterModel.findById(
+    StudentData.addmissionSemester,
+  );
+
+  userData.id = await generateUserId(academicSemister);
   const createUser = await UserModel.create(userData);
 
   if (Object.keys(createUser).length) {

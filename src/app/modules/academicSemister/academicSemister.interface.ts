@@ -10,7 +10,7 @@ export type TMonths =
   | 'November'
   | 'December';
 
-export type TAcademicSemisterName = 'Auntmn' | 'Summer' | 'Fall';
+export type TAcademicSemisterName = 'Autmn' | 'Summer' | 'Fall';
 export type TAcademicSemisterCode = '01' | '02' | '03';
 export type TAcademicSemister = {
   name: TAcademicSemisterName;
